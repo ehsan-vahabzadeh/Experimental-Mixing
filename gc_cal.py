@@ -6,9 +6,9 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 
 # ======== CONFIG ========
-INPUT_DIR   = r"Y:\Experimental_Mixing\H2-CH4\NOV\Calibration"
+INPUT_DIR   = r"Y:\Experimental_Mixing\H2-N2\NOV\Calibration"
 os.chdir(INPUT_DIR)
-XLSX_PATH ="H2-CH4-Calib.xlsx"   # <-- your file
+XLSX_PATH ="H2-N2-Calib.xlsx"   # <-- your file
 SKIP_ROWS = 2                        # skip header rows so row 3 is the first data row (0-based)
 ENGINE = "openpyxl"                  # or "calamine" if openpyxl gives style errors
 
@@ -127,7 +127,7 @@ def main():
 
     plt.figure(figsize=(7,5))
     plt.scatter(X, Y, color="blue", label="Experimental data")
-    plt.plot(x_range, y_pred, color="red", lw=2, label=f"Fit: y = {a:.3f}x + {b:.3f}")
+    plt.plot(x_range, y_pred, color="red", lw=2, label=f"Fit: y = {a:.7f}x + {b:.7f}")
     plt.xlabel("Peak Area")
     plt.ylabel("Fraction")
     plt.legend()

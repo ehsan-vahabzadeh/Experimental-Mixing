@@ -28,6 +28,7 @@ def plot_pairs_all(df: pd.DataFrame, out_png: str | None = None, title="Manual p
     plt.figure(figsize=(7,5))
 
     for label, (xcol, ycol) in {
+        "Loading 1": ("x1","y1"),
         "Loading 2": ("x2","y2"),
         "Loading 3": ("x3","y3"),
         "Unloading 1": ("x4","y4"),
@@ -105,7 +106,8 @@ def plot_pairs(df: pd.DataFrame, out_png: str | None = None, title="Manual pairs
 if __name__ == "__main__":
     # change this to your file path
     path = "manual_matrix.txt"
-    INPUT_DIR   = r"Y:\Experimental_Mixing\H2-CH4"
+    # INPUT_DIR   = r"Y:\Experimental_Mixing\H2-CH4\NOV"
+    INPUT_DIR   = r"Y:\Experimental_Mixing\H2-N2\NOV"
     import os
     os.chdir(INPUT_DIR)
     path = "Final.csv"

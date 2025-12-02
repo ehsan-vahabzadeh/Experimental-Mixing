@@ -23,15 +23,20 @@ def separate_gases_from_csv(path):
 
 
 # Example usage
-INPUT_DIR   = r"Y:\Experimental_Mixing\H2-CH4\Test5"
+# INPUT_DIR   = r"Y:\Experimental_Mixing\H2-CH4\NOV\Test4"
+# path = "H2-CH4-2ml-1bar-Test4.csv"
+# path = "CH4-H2-2ml-1bar-Test4.csv"
+
+INPUT_DIR   = r"Y:\Experimental_Mixing\H2-N2\NOV\Test5"
+# path = "H2-N2-2ml-1bar-Test5.csv"
+path = "N2-H2-2ml-1bar-Test5.csv"
 os.chdir(INPUT_DIR)
-path = "H2-CH4-2ml-1bar-Test5.csv"
-# path = "CH4-H2-2ml-1bar-Test5.csv"
 parts = path.split('-')
 Flow_Rate = float(parts[2].replace('ml', ''))
 Rock_PV = 7.767227543 # cc 
 df_H2, df_CH4, df_combined = separate_gases_from_csv(path)
-Calib_H2 = 2.5359197591755883e-05 * df_H2["H2_PeakArea"] - 0.0046483698490621395
+# Calib_H2 = 2.5389536523517017e-05 * df_H2["H2_PeakArea"] - 0.0007177391512966924 # from H2-CH4 calibration
+Calib_H2 = 2.3428170451004368e-05 * df_H2["H2_PeakArea"] + 0.00259851209393841 # from H2-N2 calibration
 Time = np.array(df_H2["Time_H2"])
 df_H2['inj_PV'] = Flow_Rate * df_H2["Time_H2"] / Rock_PV
 df_H2['Calib_H2'] = Calib_H2
